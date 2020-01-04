@@ -1,0 +1,39 @@
+service: imgur-clone-backend-functions
+
+frameworkVersion: ">=1.1.0 <2.0.0"
+
+custom:
+  bucket: dev-imgur-clone-bucket-test
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  region: eu-west-1
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - s3:*
+      Resource: "arn:aws:s3:::${self:custom.bucket}"
+    - Effect: Allow
+      Action:
+        - s3:*
+      Resource: "arn:aws:s3:::${self:custom.bucket}/*"
+
+functions:
+  list:
+    handler: listS3Objects.list
+    events:
+      - http:
+          path: list
+          method: get
+          cors: true
+  
+  uploadImage:
+    handler: getSignedUpload.requestUploadURL
+    environment:
+      BUCKET: ${self:custom.bucket}
+    events:
+      - http:
+          path: upload-node
+          method: post
+          cors: true
