@@ -34,7 +34,6 @@ export default new Router({
       { path: '/login', component: Login },
       { path: '/register', component: Register },
       { path: '/Profile', component: Profile, beforeEnter: requireAuth },
-      { path: '/upload', component: Upload, beforeEnter: requireAuth },
       { path: '/:id', component: Single },
       { path: '/logout', beforeEnter: logout }
     ]

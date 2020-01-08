@@ -8,6 +8,8 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "amazon-cognito-identity-js": "^3.2.1",
+    "aws-sdk": "^2.599.0",
     "core-js": "^2.6.5",
     "vue": "^2.6.10"
   },

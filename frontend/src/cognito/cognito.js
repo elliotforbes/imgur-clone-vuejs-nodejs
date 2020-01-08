@@ -13,7 +13,7 @@ export default class CognitoAuth {
             if (err) {
                 return cb(err, false)
             }
-            return cb(null, true)
+            return cb(session, true)
             })
         } else {
             cb(null, false)
@@ -55,26 +55,23 @@ export default class CognitoAuth {
 
         cognitoUser.authenticateUser(authenticationDetails, {
             onSuccess: function (result) {
-                console.log('access token + ' + result.getAccessToken().getJwtToken())
                 var logins = {}
                 logins['cognito-idp.' + this.options.region + '.amazonaws.com/' + this.options.UserPoolId] = result.getIdToken().getJwtToken()
-                console.log(logins)
-                
                 
                 Config.credentials = new CognitoIdentityCredentials({
                     IdentityPoolId: this.options.UserPoolId,
                     Logins: logins
                 })
-                console.log(Config.credentials)
                 this.onChange(true)
                 cb(null, result)
             },
             onFailure: function (err) {
                 cb(err);
             },
-            newPasswordRequired: function (userAttributes, requiredAttributes) {
-                console.log('New Password Is Required')
-            }
+            // newPasswordRequired: function (userAttributes, requiredAttributes) {
+                
+            //     console.log('New Password Is Required')
+            // }
         })
     }
 
