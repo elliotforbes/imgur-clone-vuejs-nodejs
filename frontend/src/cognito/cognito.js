@@ -1,5 +1,6 @@
 import { Config, CognitoIdentityCredentials } from 'aws-sdk'
 import { CognitoUser, CognitoUserPool, AuthenticationDetails, CognitoUserAttribute } from 'amazon-cognito-identity-js'
+import config from '@/config'
 
 export default class CognitoAuth {
     constructor () {
@@ -56,18 +57,18 @@ export default class CognitoAuth {
         cognitoUser.authenticateUser(authenticationDetails, {
             onSuccess: function (result) {
                 var logins = {}
-                logins['cognito-idp.' + this.options.region + '.amazonaws.com/' + this.options.UserPoolId] = result.getIdToken().getJwtToken()
+                logins['cognito-idp.' + config.region + '.amazonaws.com/' + config.UserPoolId] = result.getIdToken().getJwtToken()
                 
                 Config.credentials = new CognitoIdentityCredentials({
-                    IdentityPoolId: this.options.UserPoolId,
+                    IdentityPoolId: config.UserPoolId,
                     Logins: logins
                 })
-                this.onChange(true)
                 cb(null, result)
             },
             onFailure: function (err) {
                 cb(err);
             },
+            /*eslint: no-unused-vars: "off"*/
             // newPasswordRequired: function (userAttributes, requiredAttributes) {
                 
             //     console.log('New Password Is Required')

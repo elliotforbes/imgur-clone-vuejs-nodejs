@@ -13,6 +13,12 @@ resource "aws_s3_bucket" "bucket" {
 
 resource "aws_cognito_user_pool" "imgur_clone_pool" {
     name = "imgurclonepool"   
+
+    auto_verified_attributes = ["email"]
+
+    verification_message_template {
+        default_email_option = "CONFIRM_WITH_CODE"
+    }
 }
 
 resource "aws_cognito_user_pool_client" "client" {

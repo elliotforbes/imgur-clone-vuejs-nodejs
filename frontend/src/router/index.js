@@ -5,6 +5,7 @@ import Login from './../components/Login.vue'
 import Register from './../components/Register.vue'
 import Single from './../components/Single.vue'
 import Profile from './../components/Profile.vue'
+import Confirm from './../components/Confirm.vue'
 import cognitoAuth from '@/cognito'
 Vue.use(Router)
 
@@ -33,6 +34,7 @@ export default new Router({
       { path: '/', component: HomePage },
       { path: '/login', component: Login },
       { path: '/register', component: Register },
+      { path: '/confirm', component: Confirm },
       { path: '/Profile', component: Profile, beforeEnter: requireAuth },
       { path: '/:id', component: Single },
       { path: '/logout', beforeEnter: logout }
