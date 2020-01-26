@@ -3,5 +3,5 @@ export default {
     IdentityPoolId: 'eu-west-1_vTElG57hw',
     UserPoolId: 'eu-west-1:853957954650',
     ClientId: '7du6r7ds9332ptig4fjisui8oa',
-    s3SignedUrl: 'https://rvv1a9to8j.execute-api.eu-west-1.amazonaws.com/dev/upload-node'
+    s3SignedUrl: 'https://jwyzr20kqa.execute-api.eu-west-1.amazonaws.com/dev/upload-node'
   }

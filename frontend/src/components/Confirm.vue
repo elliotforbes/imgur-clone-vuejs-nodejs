@@ -3,16 +3,17 @@
         <h4>Confirm Signup</h4>
         <div class="card-panel red darken-2" v-if="error != null"><span class="white-text">{{ error.message }}</span></div>
         <p>Enter the verification code you should have recieved via email</p>
-        <form class="form">
+        <form class="form-group">
             <div class="input-field">
                 <label for="username">Username</label>
-                <input id="username" type="text" class="validate" v-model="username" required>
+                <input id="username" type="text" class="form-control" v-model="username" required>
             </div>
             <div class="input-field">
                 <label for="confirmcode">Confirmation Code</label>
-                <input id="confirmcode" type="text" class="validate" v-model="confirmcode" required>
+                <input id="confirmcode" type="text" class="form-control" v-model="confirmcode" required>
             </div>
             <div class="center-align">
+                <br/>
                 <button v-on:click="confirm()" class="btn btn-default btn-large">Verify Now</button>
             </div>
         </form>
@@ -62,10 +63,10 @@ p {
     width: 400px;
     height: auto;
     background-color: white;
-    margin-top: 60px;
     border-radius: 5px;
     padding: 40px;
     margin: auto;
+    margin-top: 60px;
     border: 1px solid #E4E6E7;
     box-shadow: 0px 2px 5px rgba(0,0,0,0.4);
 }

@@ -20,12 +20,18 @@
             <span class="sr-only">(current)</span>
           </router-link>
         </li>
-        <li class="nav-item">
-          <router-link class="nav-link" to="login">Login</router-link>
-        </li>
-        <li class="nav-item">
-          <router-link class="nav-link" to="register">Register</router-link>
-        </li>
+          <li v-if="isLoggedIn()" class="nav-item">
+            <router-link class="nav-link" to="profile">Profile</router-link>
+          </li>
+          <li v-if="isLoggedIn()" class="nav-item">
+            <router-link class="nav-link" to="upload">Upload</router-link>
+          </li>
+          <li v-if="!isLoggedIn()" class="nav-item">
+            <router-link class="nav-link" to="login">Login</router-link>
+          </li>
+          <li v-if="!isLoggedIn()" class="nav-item">
+            <router-link class="nav-link" to="register">Register</router-link>
+          </li>
       </ul>
       <span class="navbar-text">@Elliot_F</span>
     </div>
@@ -34,7 +40,16 @@
 
 <script>
 export default {
-    name: 'Navbar'
+    name: 'Navbar',
+    methods: {
+      isLoggedIn: function() {
+        if(this.$cognitoAuth.getCurrentUser() === null) {
+          return false;
+        } else {
+          return true;
+        }
+      }
+    }
 }
 </script>
 
