@@ -140,7 +140,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/imgur-clone-backend-functions/dev/1578134656946-2020-01-04T10:44:16.946Z/imgur-clone-backend-functions.zip"
+                "S3Key": "serverless/imgur-clone-backend-functions/dev/1580161417917-2020-01-27T21:43:37.917Z/imgur-clone-backend-functions.zip"
               },
               "FunctionName": "imgur-clone-backend-functions-dev-list",
               "Handler": "listS3Objects.list",
@@ -176,7 +176,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/imgur-clone-backend-functions/dev/1578134656946-2020-01-04T10:44:16.946Z/imgur-clone-backend-functions.zip"
+                "S3Key": "serverless/imgur-clone-backend-functions/dev/1580161417917-2020-01-27T21:43:37.917Z/imgur-clone-backend-functions.zip"
               },
               "FunctionName": "imgur-clone-backend-functions-dev-uploadImage",
               "Handler": "getSignedUpload.requestUploadURL",
@@ -400,7 +400,10 @@
                 "Ref": "ApiGatewayRestApi"
               },
               "ApiKeyRequired": false,
-              "AuthorizationType": "NONE",
+              "AuthorizationType": "COGNITO_USER_POOLS",
+              "AuthorizerId": {
+                "Ref": "1Underscore9IBAarCx9ApiGatewayAuthorizer"
+              },
               "Integration": {
                 "IntegrationHttpMethod": "POST",
                 "Type": "AWS_PROXY",
@@ -429,9 +432,25 @@
                 }
               },
               "MethodResponses": []
+            },
+            "DependsOn": "1Underscore9IBAarCx9ApiGatewayAuthorizer"
+          },
+          "1Underscore9IBAarCx9ApiGatewayAuthorizer": {
+            "Type": "AWS::ApiGateway::Authorizer",
+            "Properties": {
+              "AuthorizerResultTtlInSeconds": 300,
+              "IdentitySource": "method.request.header.Authorization",
+              "Name": "1_9IBAarCx9",
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              },
+              "Type": "COGNITO_USER_POOLS",
+              "ProviderARNs": [
+                "arn:aws:cognito-idp:eu-west-1:853957954650:userpool/eu-west-1_9IBAarCx9"
+              ]
             }
           },
-          "ApiGatewayDeployment1578134656957": {
+          "ApiGatewayDeployment1580161417928": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -669,6 +688,14 @@
                 ],
                 "allowCredentials": false
               },
+              "authorizer": {
+                "type": "token",
+                "name": "1_9IBAarCx9",
+                "arn": "arn:aws:cognito-idp:eu-west-1:853957954650:userpool/eu-west-1_9IBAarCx9",
+                "resultTtlInSeconds": 300,
+                "identitySource": "method.request.header.Authorization",
+                "claims": []
+              },
               "integration": "AWS_PROXY"
             }
           }
@@ -684,7 +711,7 @@
     "artifact": "/Users/elliot/Documents/Projects/TutorialEdge/Projects/projects/imgur-clone-vuejs-nodejs/backend/.serverless/imgur-clone-backend-functions.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/imgur-clone-backend-functions/dev/1578134656946-2020-01-04T10:44:16.946Z",
+    "artifactDirectoryName": "serverless/imgur-clone-backend-functions/dev/1580161417917-2020-01-27T21:43:37.917Z",
     "artifact": "imgur-clone-backend-functions.zip"
   }
 }

@@ -53,10 +53,7 @@ export default {
             } else {
                 const url = config.s3SignedUrl;
                 axios.defaults.headers.common['Authorization'] = result;
-                let headers = {
-                        "Access-Control-Allow-Origin": "*"
-                };
-                axios({ method: 'post', url: url, headers: headers, data: { name: file.name, type: file.type }})
+                axios({ method: 'post', url: url, data: { name: file.name, type: file.type }})
                     .then(x => {
                         var options = { headers: { 
                             'Content-Type': file.type,
