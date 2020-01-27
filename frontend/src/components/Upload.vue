@@ -56,7 +56,8 @@ export default {
                 axios({ method: 'post', url: url, data: { name: file.name, type: file.type }})
                     .then(x => {
                         var options = { headers: { 
-                            'Content-Type': file.type
+                            'Content-Type': file.type,
+                            'x-amz-acl': 'public-read'
                         }}
                         delete axios.defaults.headers.common['Authorization'];
                         axios.put(x.data.uploadURL, file, options)
