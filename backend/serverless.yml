@@ -38,6 +38,6 @@ functions:
           method: post
           cors: true
           authorizer:
-            arn: arn:aws:cognito-idp:eu-west-1:853957954650:userpool/eu-west-1_9IBAarCx9
+            arn: arn:aws:cognito-idp:eu-west-1:853957954650:userpool/eu-west-1_vTElG57hw
             identitySource: method.request.header.Authorization
             type: token

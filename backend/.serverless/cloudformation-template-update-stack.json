@@ -118,7 +118,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/imgur-clone-backend-functions/dev/1580161417917-2020-01-27T21:43:37.917Z/imgur-clone-backend-functions.zip"
+          "S3Key": "serverless/imgur-clone-backend-functions/dev/1580161811412-2020-01-27T21:50:11.412Z/imgur-clone-backend-functions.zip"
         },
         "FunctionName": "imgur-clone-backend-functions-dev-list",
         "Handler": "listS3Objects.list",
@@ -154,7 +154,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/imgur-clone-backend-functions/dev/1580161417917-2020-01-27T21:43:37.917Z/imgur-clone-backend-functions.zip"
+          "S3Key": "serverless/imgur-clone-backend-functions/dev/1580161811412-2020-01-27T21:50:11.412Z/imgur-clone-backend-functions.zip"
         },
         "FunctionName": "imgur-clone-backend-functions-dev-uploadImage",
         "Handler": "getSignedUpload.requestUploadURL",
@@ -380,7 +380,7 @@
         "ApiKeyRequired": false,
         "AuthorizationType": "COGNITO_USER_POOLS",
         "AuthorizerId": {
-          "Ref": "1Underscore9IBAarCx9ApiGatewayAuthorizer"
+          "Ref": "1UnderscorevTElG57hwApiGatewayAuthorizer"
         },
         "Integration": {
           "IntegrationHttpMethod": "POST",
@@ -411,24 +411,24 @@
         },
         "MethodResponses": []
       },
-      "DependsOn": "1Underscore9IBAarCx9ApiGatewayAuthorizer"
+      "DependsOn": "1UnderscorevTElG57hwApiGatewayAuthorizer"
     },
-    "1Underscore9IBAarCx9ApiGatewayAuthorizer": {
+    "1UnderscorevTElG57hwApiGatewayAuthorizer": {
       "Type": "AWS::ApiGateway::Authorizer",
       "Properties": {
         "AuthorizerResultTtlInSeconds": 300,
         "IdentitySource": "method.request.header.Authorization",
-        "Name": "1_9IBAarCx9",
+        "Name": "1_vTElG57hw",
         "RestApiId": {
           "Ref": "ApiGatewayRestApi"
         },
         "Type": "COGNITO_USER_POOLS",
         "ProviderARNs": [
-          "arn:aws:cognito-idp:eu-west-1:853957954650:userpool/eu-west-1_9IBAarCx9"
+          "arn:aws:cognito-idp:eu-west-1:853957954650:userpool/eu-west-1_vTElG57hw"
         ]
       }
     },
-    "ApiGatewayDeployment1580161417928": {
+    "ApiGatewayDeployment1580161811431": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
