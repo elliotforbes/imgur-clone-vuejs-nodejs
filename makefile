@@ -1,6 +1,6 @@
 build:
 	pushd frontend
-	npm install
-	npm run build
+	yarn install
+	yarn run build
 
 all: build
