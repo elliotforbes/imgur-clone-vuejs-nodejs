@@ -1,4 +1,6 @@
 build:
-	cd frontend && npm run build
+	pushd frontend
+	npm install
+	npm run build
 
 all: build
