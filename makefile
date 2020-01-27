@@ -1,6 +1,4 @@
 build:
-	pushd frontend
-	yarn install
-	yarn run build
+	cd frontend && yarn install && yarn build
 
 all: build
