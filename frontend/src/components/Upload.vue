@@ -52,14 +52,15 @@ export default {
                 this.error = err;
             } else {
                 const url = config.s3SignedUrl;
-                axios.defaults.headers.common['Authorization'] = result;
-                axios({ method: 'post', url: url, data: { name: file.name, type: file.type }})
+                let headers = {
+                    'Authorization': result
+                };
+                axios({ method: 'post', url: url, headers: headers, data: { name: file.name, type: file.type }})
                     .then(x => {
-                        var options = { headers: { 
+                        let options = { headers: { 
                             'Content-Type': file.type,
                             'x-amz-acl': 'public-read'
                         }}
-                        delete axios.defaults.headers.common['Authorization'];
                         axios.put(x.data.uploadURL, file, options)
                     })
                     .then(status => {
