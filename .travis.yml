@@ -3,7 +3,11 @@ node_js:
   - 11
 
 before_script:
-- cd frontend && yarn install
+- pushd frontend
+- yarn install
+- popd
 
 script:
-- cd frontend && yarn build
+- pushd frontend
+- yarn build
+- popd
