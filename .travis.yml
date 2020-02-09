@@ -1,7 +1,12 @@
 language: node_js
 node_js:
 - 11
-
+env:
+  matrix:
+  - AWS_ACCESS_KEY_ID=AKIAIN5O72B44O5TWFVA
+  global:
+    secure: pKidPvpHiO32R0gOHiBE/omiDer//7vdI8vEhw5cjTUIW4DI+ICVMOEqtCj3BESMgUhk7EQTciRV9Bh/m2JrPwPdSjFasIAZcswKUxf9Lu6EfDiw5C/ugywfd2FghVch2u4HGQRoHYHMCV2JFOsOSkAfyHxRltmjOCpbUnYI6WIPiq8JWdkVgghbbLgy3LcRZ66e8Vxh6Ma9x7t5sf+C53X5UGR1obkcpDxHkeepBw+NW2sHCcfsupL5bVJBSZY6BuHzypRjGSzz9MmoySS/e4eaFa1+MVHmc6//MnK+P3PwRc/C+TGQPf1+VkJMnHmIdOmTVzjpnhu8s/21Jtvd+8UFUUoQ2ZZx0Yr/G9xToNkIeTzMiUATKsiGlDzWp25WRrstTEGbxqWRaXV7hbc66U3MiTUh2ZMxZep30aLtRauUW363JWrvJRdsNyZ9ga6oKGc2ZWjJK6jYBUeAW6cpWQxru3b5K0zIgrOr/kXTEsf4a9qHJPv4xcZRpZK/JnxwQJwrgHOmpPZGNAHrmdJ0G6u+9IXQ70c5Fnd9HfLFLm8NLY+oA4JIXbj/JEepewnTEMFx989XZ+L36SyxFtTzvFNZg4DorrYgq0I3t2wIMW3vks3kMFZECR1CZRXPYsDTgTuOohb+fKzuQlASJbHEZBtSQeeyvIctY/wEetmQK+w=
+    
 before_script:
 - pushd frontend
 - yarn install
@@ -9,7 +14,6 @@ before_script:
 - pushd backend
 - yarn add serverless
 - popd
-
 script:
 - pushd frontend
 - yarn build
@@ -17,7 +21,6 @@ script:
 - pushd backend
 - sls deploy
 - popd
-
 deploy:
   provider: s3
   access_key_id: AKIAIN5O72B44O5TWFVA
