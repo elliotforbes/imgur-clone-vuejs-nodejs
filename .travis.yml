@@ -7,7 +7,7 @@ before_script:
 - yarn install
 - popd
 - pushd backend
-- yarn install
+- yarn install serverless
 - popd
 
 script:
