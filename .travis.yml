@@ -1,0 +1,9 @@
+language: node_js
+node_js:
+  - 11
+
+before_script:
+- cd frontend && yarn install
+
+script:
+- cd frontend && yarn build
