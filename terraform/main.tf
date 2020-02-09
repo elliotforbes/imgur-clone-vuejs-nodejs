@@ -20,6 +20,15 @@ resource "aws_s3_bucket" "bucket" {
     }
 }
 
+resource "aws_s3_bucket" "frontend_bucket" {
+    bucket = "imgur-clone-frontend"
+
+    tags = {
+        Name = "Dev Imgur Clone Frontend"
+        Environment = "Dev"
+    }
+}
+
 resource "aws_cognito_user_pool" "imgur_clone_pool" {
     name = "imgurclonepool"   
 
@@ -46,4 +55,8 @@ output "UserPoolArn" {
 
 output "ClientId" {
     value = "${aws_cognito_user_pool_client.client.id}"
+}
+
+output "frontend-bucket" {
+    value = "${aws_s3_bucket.frontend_bucket.bucket}"
 }

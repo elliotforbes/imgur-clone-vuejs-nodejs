@@ -1,13 +1,20 @@
 language: node_js
 node_js:
-  - 11
-
+- 11
 before_script:
 - pushd frontend
 - yarn install
 - popd
-
 script:
 - pushd frontend
 - yarn build
 - popd
+deploy:
+  provider: s3
+  access_key_id: AKIAIN5O72B44O5TWFVA
+  secret_access_key:
+    secure: QRIriQRPkMIlZCHujIvEqBDos0oOTUX+LClaxknTf8ufoNIR7Ygzq41De8yHQNVIqCSmq0481pNrY7bItEXFGJ/6480ayprRDU3TvO/3C0Wd3XY1+hQty2LZZoVuVjJt7EOZEO1CrIiD0/3IqMVv0Cccntj95I2A8IPuNhH3AEAiupR8PxsmjHPQzZ1rYWhqzu5j8ay7dtlSeBW3Ca9sPS+W+eVs7AYtgw/ovrEjEsO3NR15qO84+3VK4847Uh6KmJ14G5DF9ozdQMq3T/oV4WtGlCmBWA8POrf2HGtbuxnAuumFBo2Urd2Sq22HfrGHbewOqD6tmMw9n6Nb4FsnJPSMFw+LhP1fjSlFaCfAJk829wFtj/pDZY1CGeiRJ8aZq/CoFU9Q+0jNt2ytpsLlr3SUQBQeWC4hbNsOpLhIpYFf2+LMblboMhBORWBP+tA5/h8Dx4b45JMv0WtxhaWjeRi5ATnkWgsra/818mGIUyhnuq4DCx93mUJ7DfvsmBAf4fv1+oM2HzH/fl+ngTz7etyTze5Z8PaI7eOHy/GEAXLJcUJJMatcL9n6Cv/YZJUgo8xXdxs76P7uT024tktEUR4Yhq0K9qTyAZYW9iuv5dF9azrR1qu966aK23w4+F6ZVrhZE347tiixcLtHxNtc/ja8sx+LO0WtjFh0F8H1Chg=
+  bucket: imgur-clone-frontend
+  skip_cleanup: true
+  local-dir: frontend/dist
+  acl: public_read
