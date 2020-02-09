@@ -18,3 +18,4 @@ deploy:
   skip_cleanup: true
   local-dir: frontend/dist
   acl: public_read
+  region: eu-west-1
