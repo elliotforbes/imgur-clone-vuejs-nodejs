@@ -1,14 +1,23 @@
 language: node_js
 node_js:
 - 11
+
 before_script:
 - pushd frontend
 - yarn install
 - popd
+- pushd backend
+- yarn install
+- popd
+
 script:
 - pushd frontend
 - yarn build
 - popd
+- pushd backend
+- sls deploy
+- popd
+
 deploy:
   provider: s3
   access_key_id: AKIAIN5O72B44O5TWFVA
