@@ -23,6 +23,11 @@ resource "aws_s3_bucket" "bucket" {
 resource "aws_s3_bucket" "frontend_bucket" {
     bucket = "imgur-clone-frontend"
 
+    website {
+        index_document = "index.html"
+        error_document = "index.html"
+    }
+
     tags = {
         Name = "Dev Imgur Clone Frontend"
         Environment = "Dev"
